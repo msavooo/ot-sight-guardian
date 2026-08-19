@@ -18,7 +18,7 @@ export const Route = createFileRoute("/alerts")({
       { property: "og:description", content: "Explainable OT detections mapped to assets and ATT&CK for ICS." },
     ],
   }),
-  component: AlertsPage;
+  component: AlertsPage,
 });
 
 const SEVERITIES: Severity[] = ["critical", "high", "medium", "low", "informational"];
