@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as NetworkMapRouteImport } from './routes/network-map'
 import { Route as NetworkMonitorRouteImport } from './routes/network-monitor'
 import { Route as AssetsIndexRouteImport } from './routes/assets.index'
 import { Route as AssetsAssetIdRouteImport } from './routes/assets.$assetId'
@@ -23,6 +24,11 @@ const IndexRoute = IndexRouteImport.update({
 const AlertsRoute = AlertsRouteImport.update({
   id: '/alerts',
   path: '/alerts',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const NetworkMapRoute = NetworkMapRouteImport.update({
+  id: '/network-map',
+  path: '/network-map',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NetworkMonitorRoute = NetworkMonitorRouteImport.update({
@@ -44,6 +50,7 @@ const AssetsAssetIdRoute = AssetsAssetIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/assets/': typeof AssetsIndexRoute
@@ -51,6 +58,7 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/assets': typeof AssetsIndexRoute
@@ -59,6 +67,7 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/assets/': typeof AssetsIndexRoute
@@ -66,13 +75,25 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    '/' | '/alerts' | '/network-monitor' | '/assets/$assetId' | '/assets/'
+    | '/'
+    | '/alerts'
+    | '/network-map'
+    | '/network-monitor'
+    | '/assets/$assetId'
+    | '/assets/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/alerts' | '/network-monitor' | '/assets/$assetId' | '/assets'
+  to:
+    | '/'
+    | '/alerts'
+    | '/network-map'
+    | '/network-monitor'
+    | '/assets/$assetId'
+    | '/assets'
   id:
     | '__root__'
     | '/'
     | '/alerts'
+    | '/network-map'
     | '/network-monitor'
     | '/assets/$assetId'
     | '/assets/'
@@ -81,6 +102,7 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlertsRoute: typeof AlertsRoute
+  NetworkMapRoute: typeof NetworkMapRoute
   NetworkMonitorRoute: typeof NetworkMonitorRoute
   AssetsAssetIdRoute: typeof AssetsAssetIdRoute
   AssetsIndexRoute: typeof AssetsIndexRoute
@@ -100,6 +122,13 @@ declare module '@tanstack/react-router' {
       path: '/alerts'
       fullPath: '/alerts'
       preLoaderRoute: typeof AlertsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/network-map': {
+      id: '/network-map'
+      path: '/network-map'
+      fullPath: '/network-map'
+      preLoaderRoute: typeof NetworkMapRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/network-monitor': {
@@ -129,6 +158,7 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
+  NetworkMapRoute: NetworkMapRoute,
   NetworkMonitorRoute: NetworkMonitorRoute,
   AssetsAssetIdRoute: AssetsAssetIdRoute,
   AssetsIndexRoute: AssetsIndexRoute,
