@@ -16,6 +16,7 @@ import { Route as InvestigationsRouteImport } from './routes/investigations'
 import { Route as NetworkMapRouteImport } from './routes/network-map'
 import { Route as NetworkMonitorRouteImport } from './routes/network-monitor'
 import { Route as ProtocolsRouteImport } from './routes/protocols'
+import { Route as RiskRouteImport } from './routes/risk'
 import { Route as VulnerabilitiesRouteImport } from './routes/vulnerabilities'
 import { Route as ZonesRouteImport } from './routes/zones'
 import { Route as AssetsIndexRouteImport } from './routes/assets.index'
@@ -56,6 +57,11 @@ const ProtocolsRoute = ProtocolsRouteImport.update({
   path: '/protocols',
   getParentRoute: () => rootRouteImport,
 } as any)
+const RiskRoute = RiskRouteImport.update({
+  id: '/risk',
+  path: '/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const VulnerabilitiesRoute = VulnerabilitiesRouteImport.update({
   id: '/vulnerabilities',
   path: '/vulnerabilities',
@@ -85,6 +91,7 @@ export interface FileRoutesByFullPath {
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/risk': typeof RiskRoute
   '/vulnerabilities': typeof VulnerabilitiesRoute
   '/zones': typeof ZonesRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
@@ -98,6 +105,7 @@ export interface FileRoutesByTo {
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/risk': typeof RiskRoute
   '/vulnerabilities': typeof VulnerabilitiesRoute
   '/zones': typeof ZonesRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
@@ -112,6 +120,7 @@ export interface FileRoutesById {
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/risk': typeof RiskRoute
   '/vulnerabilities': typeof VulnerabilitiesRoute
   '/zones': typeof ZonesRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
@@ -127,6 +136,7 @@ export interface FileRouteTypes {
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/risk'
     | '/vulnerabilities'
     | '/zones'
     | '/assets/$assetId'
@@ -140,6 +150,7 @@ export interface FileRouteTypes {
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/risk'
     | '/vulnerabilities'
     | '/zones'
     | '/assets/$assetId'
@@ -153,6 +164,7 @@ export interface FileRouteTypes {
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/risk'
     | '/vulnerabilities'
     | '/zones'
     | '/assets/$assetId'
@@ -167,6 +179,7 @@ export interface RootRouteChildren {
   NetworkMapRoute: typeof NetworkMapRoute
   NetworkMonitorRoute: typeof NetworkMonitorRoute
   ProtocolsRoute: typeof ProtocolsRoute
+  RiskRoute: typeof RiskRoute
   VulnerabilitiesRoute: typeof VulnerabilitiesRoute
   ZonesRoute: typeof ZonesRoute
   AssetsAssetIdRoute: typeof AssetsAssetIdRoute
@@ -224,6 +237,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProtocolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/risk': {
+      id: '/risk'
+      path: '/risk'
+      fullPath: '/risk'
+      preLoaderRoute: typeof RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/vulnerabilities': {
       id: '/vulnerabilities'
       path: '/vulnerabilities'
@@ -263,6 +283,7 @@ const rootRouteChildren: RootRouteChildren = {
   NetworkMapRoute: NetworkMapRoute,
   NetworkMonitorRoute: NetworkMonitorRoute,
   ProtocolsRoute: ProtocolsRoute,
+  RiskRoute: RiskRoute,
   VulnerabilitiesRoute: VulnerabilitiesRoute,
   ZonesRoute: ZonesRoute,
   AssetsAssetIdRoute: AssetsAssetIdRoute,
