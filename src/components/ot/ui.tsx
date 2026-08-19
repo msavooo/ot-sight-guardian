@@ -24,8 +24,8 @@ export function SeverityBadge({
   className,
 }: {
   severity: Severity;
-  label?: string;
-  className?: string;
+  label?: string | undefined;
+  className?: string | undefined;
 }) {
   return (
     <span
@@ -47,8 +47,8 @@ export function Tag({
   className,
 }: {
   children: ReactNode;
-  tone?: "neutral" | "accent" | "healthy" | "warn" | "danger";
-  className?: string;
+  tone?: "neutral" | "accent" | "healthy" | "warn" | "danger" | undefined;
+  className?: string | undefined;
 }) {
   const tones = {
     neutral: "border-border bg-secondary/60 text-muted-foreground",
@@ -78,12 +78,12 @@ export function Panel({
   className,
   bodyClassName,
 }: {
-  title?: string;
-  subtitle?: string;
-  action?: ReactNode;
+  title?: string | undefined;
+  subtitle?: string | undefined;
+  action?: ReactNode | undefined;
   children: ReactNode;
-  className?: string;
-  bodyClassName?: string;
+  className?: string | undefined;
+  bodyClassName?: string | undefined;
 }) {
   return (
     <section className={cn("panel flex min-w-0 flex-col", className)}>
@@ -108,7 +108,7 @@ export function PageHeader({
 }: {
   title: string;
   description: string;
-  children?: ReactNode;
+  children?: ReactNode | undefined;
 }) {
   return (
     <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-4">
@@ -130,9 +130,9 @@ export function KpiCard({
 }: {
   label: string;
   value: ReactNode;
-  hint?: string;
-  tone?: "neutral" | "accent" | "healthy" | "medium" | "high" | "critical";
-  icon?: ReactNode;
+  hint?: string | undefined;
+  tone?: "neutral" | "accent" | "healthy" | "medium" | "high" | "critical" | undefined;
+  icon?: ReactNode | undefined;
 }) {
   const bar = {
     neutral: "bg-muted-foreground/40",
