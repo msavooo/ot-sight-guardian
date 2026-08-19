@@ -16,6 +16,7 @@ import { Route as InvestigationsRouteImport } from './routes/investigations'
 import { Route as NetworkMapRouteImport } from './routes/network-map'
 import { Route as NetworkMonitorRouteImport } from './routes/network-monitor'
 import { Route as ProtocolsRouteImport } from './routes/protocols'
+import { Route as ZonesRouteImport } from './routes/zones'
 import { Route as AssetsIndexRouteImport } from './routes/assets.index'
 import { Route as AssetsAssetIdRouteImport } from './routes/assets.$assetId'
 
@@ -54,6 +55,11 @@ const ProtocolsRoute = ProtocolsRouteImport.update({
   path: '/protocols',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ZonesRoute = ZonesRouteImport.update({
+  id: '/zones',
+  path: '/zones',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AssetsIndexRoute = AssetsIndexRouteImport.update({
   id: '/assets/',
   path: '/assets/',
@@ -73,6 +79,7 @@ export interface FileRoutesByFullPath {
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/zones': typeof ZonesRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/assets/': typeof AssetsIndexRoute
 }
@@ -84,6 +91,7 @@ export interface FileRoutesByTo {
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/zones': typeof ZonesRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/assets': typeof AssetsIndexRoute
 }
@@ -96,6 +104,7 @@ export interface FileRoutesById {
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/zones': typeof ZonesRoute
   '/assets/$assetId': typeof AssetsAssetIdRoute
   '/assets/': typeof AssetsIndexRoute
 }
@@ -109,6 +118,7 @@ export interface FileRouteTypes {
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/zones'
     | '/assets/$assetId'
     | '/assets/'
   fileRoutesByTo: FileRoutesByTo
@@ -120,6 +130,7 @@ export interface FileRouteTypes {
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/zones'
     | '/assets/$assetId'
     | '/assets'
   id:
@@ -131,6 +142,7 @@ export interface FileRouteTypes {
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/zones'
     | '/assets/$assetId'
     | '/assets/'
   fileRoutesById: FileRoutesById
@@ -143,6 +155,7 @@ export interface RootRouteChildren {
   NetworkMapRoute: typeof NetworkMapRoute
   NetworkMonitorRoute: typeof NetworkMonitorRoute
   ProtocolsRoute: typeof ProtocolsRoute
+  ZonesRoute: typeof ZonesRoute
   AssetsAssetIdRoute: typeof AssetsAssetIdRoute
   AssetsIndexRoute: typeof AssetsIndexRoute
 }
@@ -198,6 +211,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProtocolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/zones': {
+      id: '/zones'
+      path: '/zones'
+      fullPath: '/zones'
+      preLoaderRoute: typeof ZonesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/assets/': {
       id: '/assets/'
       path: '/assets'
@@ -223,6 +243,7 @@ const rootRouteChildren: RootRouteChildren = {
   NetworkMapRoute: NetworkMapRoute,
   NetworkMonitorRoute: NetworkMonitorRoute,
   ProtocolsRoute: ProtocolsRoute,
+  ZonesRoute: ZonesRoute,
   AssetsAssetIdRoute: AssetsAssetIdRoute,
   AssetsIndexRoute: AssetsIndexRoute,
 }
