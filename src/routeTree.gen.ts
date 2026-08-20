@@ -11,12 +11,17 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AlertsRouteImport } from './routes/alerts'
+import { Route as AuditLogRouteImport } from './routes/audit-log'
 import { Route as BaselineRouteImport } from './routes/baseline'
 import { Route as InvestigationsRouteImport } from './routes/investigations'
+import { Route as MitreRouteImport } from './routes/mitre'
 import { Route as NetworkMapRouteImport } from './routes/network-map'
 import { Route as NetworkMonitorRouteImport } from './routes/network-monitor'
 import { Route as ProtocolsRouteImport } from './routes/protocols'
+import { Route as ReportsRouteImport } from './routes/reports'
 import { Route as RiskRouteImport } from './routes/risk'
+import { Route as SensorsRouteImport } from './routes/sensors'
+import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as ThreatIntelligenceRouteImport } from './routes/threat-intelligence'
 import { Route as VulnerabilitiesRouteImport } from './routes/vulnerabilities'
 import { Route as ZonesRouteImport } from './routes/zones'
@@ -33,6 +38,11 @@ const AlertsRoute = AlertsRouteImport.update({
   path: '/alerts',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuditLogRoute = AuditLogRouteImport.update({
+  id: '/audit-log',
+  path: '/audit-log',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const BaselineRoute = BaselineRouteImport.update({
   id: '/baseline',
   path: '/baseline',
@@ -41,6 +51,11 @@ const BaselineRoute = BaselineRouteImport.update({
 const InvestigationsRoute = InvestigationsRouteImport.update({
   id: '/investigations',
   path: '/investigations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const MitreRoute = MitreRouteImport.update({
+  id: '/mitre',
+  path: '/mitre',
   getParentRoute: () => rootRouteImport,
 } as any)
 const NetworkMapRoute = NetworkMapRouteImport.update({
@@ -58,9 +73,24 @@ const ProtocolsRoute = ProtocolsRouteImport.update({
   path: '/protocols',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ReportsRoute = ReportsRouteImport.update({
+  id: '/reports',
+  path: '/reports',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const RiskRoute = RiskRouteImport.update({
   id: '/risk',
   path: '/risk',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SensorsRoute = SensorsRouteImport.update({
+  id: '/sensors',
+  path: '/sensors',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SettingsRoute = SettingsRouteImport.update({
+  id: '/settings',
+  path: '/settings',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ThreatIntelligenceRoute = ThreatIntelligenceRouteImport.update({
@@ -92,12 +122,17 @@ const AssetsAssetIdRoute = AssetsAssetIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/audit-log': typeof AuditLogRoute
   '/baseline': typeof BaselineRoute
   '/investigations': typeof InvestigationsRoute
+  '/mitre': typeof MitreRoute
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/sensors': typeof SensorsRoute
+  '/settings': typeof SettingsRoute
   '/threat-intelligence': typeof ThreatIntelligenceRoute
   '/vulnerabilities': typeof VulnerabilitiesRoute
   '/zones': typeof ZonesRoute
@@ -107,12 +142,17 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/audit-log': typeof AuditLogRoute
   '/baseline': typeof BaselineRoute
   '/investigations': typeof InvestigationsRoute
+  '/mitre': typeof MitreRoute
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/sensors': typeof SensorsRoute
+  '/settings': typeof SettingsRoute
   '/threat-intelligence': typeof ThreatIntelligenceRoute
   '/vulnerabilities': typeof VulnerabilitiesRoute
   '/zones': typeof ZonesRoute
@@ -123,12 +163,17 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/alerts': typeof AlertsRoute
+  '/audit-log': typeof AuditLogRoute
   '/baseline': typeof BaselineRoute
   '/investigations': typeof InvestigationsRoute
+  '/mitre': typeof MitreRoute
   '/network-map': typeof NetworkMapRoute
   '/network-monitor': typeof NetworkMonitorRoute
   '/protocols': typeof ProtocolsRoute
+  '/reports': typeof ReportsRoute
   '/risk': typeof RiskRoute
+  '/sensors': typeof SensorsRoute
+  '/settings': typeof SettingsRoute
   '/threat-intelligence': typeof ThreatIntelligenceRoute
   '/vulnerabilities': typeof VulnerabilitiesRoute
   '/zones': typeof ZonesRoute
@@ -140,12 +185,17 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/alerts'
+    | '/audit-log'
     | '/baseline'
     | '/investigations'
+    | '/mitre'
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/reports'
     | '/risk'
+    | '/sensors'
+    | '/settings'
     | '/threat-intelligence'
     | '/vulnerabilities'
     | '/zones'
@@ -155,12 +205,17 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/alerts'
+    | '/audit-log'
     | '/baseline'
     | '/investigations'
+    | '/mitre'
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/reports'
     | '/risk'
+    | '/sensors'
+    | '/settings'
     | '/threat-intelligence'
     | '/vulnerabilities'
     | '/zones'
@@ -170,12 +225,17 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/alerts'
+    | '/audit-log'
     | '/baseline'
     | '/investigations'
+    | '/mitre'
     | '/network-map'
     | '/network-monitor'
     | '/protocols'
+    | '/reports'
     | '/risk'
+    | '/sensors'
+    | '/settings'
     | '/threat-intelligence'
     | '/vulnerabilities'
     | '/zones'
@@ -186,12 +246,17 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AlertsRoute: typeof AlertsRoute
+  AuditLogRoute: typeof AuditLogRoute
   BaselineRoute: typeof BaselineRoute
   InvestigationsRoute: typeof InvestigationsRoute
+  MitreRoute: typeof MitreRoute
   NetworkMapRoute: typeof NetworkMapRoute
   NetworkMonitorRoute: typeof NetworkMonitorRoute
   ProtocolsRoute: typeof ProtocolsRoute
+  ReportsRoute: typeof ReportsRoute
   RiskRoute: typeof RiskRoute
+  SensorsRoute: typeof SensorsRoute
+  SettingsRoute: typeof SettingsRoute
   ThreatIntelligenceRoute: typeof ThreatIntelligenceRoute
   VulnerabilitiesRoute: typeof VulnerabilitiesRoute
   ZonesRoute: typeof ZonesRoute
@@ -215,6 +280,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AlertsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/audit-log': {
+      id: '/audit-log'
+      path: '/audit-log'
+      fullPath: '/audit-log'
+      preLoaderRoute: typeof AuditLogRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/baseline': {
       id: '/baseline'
       path: '/baseline'
@@ -227,6 +299,13 @@ declare module '@tanstack/react-router' {
       path: '/investigations'
       fullPath: '/investigations'
       preLoaderRoute: typeof InvestigationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/mitre': {
+      id: '/mitre'
+      path: '/mitre'
+      fullPath: '/mitre'
+      preLoaderRoute: typeof MitreRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/network-map': {
@@ -250,11 +329,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ProtocolsRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/reports': {
+      id: '/reports'
+      path: '/reports'
+      fullPath: '/reports'
+      preLoaderRoute: typeof ReportsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/risk': {
       id: '/risk'
       path: '/risk'
       fullPath: '/risk'
       preLoaderRoute: typeof RiskRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sensors': {
+      id: '/sensors'
+      path: '/sensors'
+      fullPath: '/sensors'
+      preLoaderRoute: typeof SensorsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/settings': {
+      id: '/settings'
+      path: '/settings'
+      fullPath: '/settings'
+      preLoaderRoute: typeof SettingsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/threat-intelligence': {
@@ -298,12 +398,17 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AlertsRoute: AlertsRoute,
+  AuditLogRoute: AuditLogRoute,
   BaselineRoute: BaselineRoute,
   InvestigationsRoute: InvestigationsRoute,
+  MitreRoute: MitreRoute,
   NetworkMapRoute: NetworkMapRoute,
   NetworkMonitorRoute: NetworkMonitorRoute,
   ProtocolsRoute: ProtocolsRoute,
+  ReportsRoute: ReportsRoute,
   RiskRoute: RiskRoute,
+  SensorsRoute: SensorsRoute,
+  SettingsRoute: SettingsRoute,
   ThreatIntelligenceRoute: ThreatIntelligenceRoute,
   VulnerabilitiesRoute: VulnerabilitiesRoute,
   ZonesRoute: ZonesRoute,

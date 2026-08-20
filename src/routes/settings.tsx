@@ -27,8 +27,6 @@ const INTEGRATIONS = [
   { name: "Email / SMTP Relay", type: "Notification", status: "Not configured" },
 ];
 
-export default function noop() {}
-
 function Settings() {
   return (
     <div className="space-y-5">
