@@ -14,16 +14,582 @@ export type Database = {
   }
   public: {
     Tables: {
-      [_ in never]: never
+      alerts: {
+        Row: {
+          anomaly_score: number
+          asset_id: string
+          description: string
+          dst_name: string
+          explanation: string
+          id: string
+          mitre: string
+          owner: string
+          protocol: string
+          recommendation: string
+          severity: string
+          src_name: string
+          status: string
+          timestamp: string
+          title: string
+          type: string
+          updated_at: string
+          zone: string
+        }
+        Insert: {
+          anomaly_score?: number
+          asset_id: string
+          description: string
+          dst_name: string
+          explanation: string
+          id: string
+          mitre: string
+          owner?: string
+          protocol: string
+          recommendation: string
+          severity: string
+          src_name: string
+          status?: string
+          timestamp: string
+          title: string
+          type: string
+          updated_at?: string
+          zone: string
+        }
+        Update: {
+          anomaly_score?: number
+          asset_id?: string
+          description?: string
+          dst_name?: string
+          explanation?: string
+          id?: string
+          mitre?: string
+          owner?: string
+          protocol?: string
+          recommendation?: string
+          severity?: string
+          src_name?: string
+          status?: string
+          timestamp?: string
+          title?: string
+          type?: string
+          updated_at?: string
+          zone?: string
+        }
+        Relationships: []
+      }
+      assets: {
+        Row: {
+          criticality: string
+          firmware: string
+          first_seen: string
+          id: string
+          ip: string
+          is_new: boolean
+          last_seen: string
+          location: string
+          mac: string
+          managed: boolean
+          model: string
+          name: string
+          os: string
+          protocols: Json
+          purdue: string
+          risk_score: number
+          serial: string
+          site: string
+          status: string
+          type: string
+          vendor: string
+          vulnerabilities: number
+          zone: string
+        }
+        Insert: {
+          criticality: string
+          firmware: string
+          first_seen?: string
+          id: string
+          ip: string
+          is_new?: boolean
+          last_seen?: string
+          location: string
+          mac: string
+          managed?: boolean
+          model: string
+          name: string
+          os: string
+          protocols?: Json
+          purdue: string
+          risk_score?: number
+          serial: string
+          site: string
+          status?: string
+          type: string
+          vendor: string
+          vulnerabilities?: number
+          zone: string
+        }
+        Update: {
+          criticality?: string
+          firmware?: string
+          first_seen?: string
+          id?: string
+          ip?: string
+          is_new?: boolean
+          last_seen?: string
+          location?: string
+          mac?: string
+          managed?: boolean
+          model?: string
+          name?: string
+          os?: string
+          protocols?: Json
+          purdue?: string
+          risk_score?: number
+          serial?: string
+          site?: string
+          status?: string
+          type?: string
+          vendor?: string
+          vulnerabilities?: number
+          zone?: string
+        }
+        Relationships: []
+      }
+      audit_log: {
+        Row: {
+          action: string
+          actor: string
+          id: string
+          ip: string
+          result: string
+          role: string
+          target: string
+          time: string
+          user_id: string | null
+        }
+        Insert: {
+          action: string
+          actor: string
+          id?: string
+          ip?: string
+          result?: string
+          role: string
+          target: string
+          time?: string
+          user_id?: string | null
+        }
+        Update: {
+          action?: string
+          actor?: string
+          id?: string
+          ip?: string
+          result?: string
+          role?: string
+          target?: string
+          time?: string
+          user_id?: string | null
+        }
+        Relationships: []
+      }
+      baselines: {
+        Row: {
+          anomaly_score: number
+          confidence: number
+          dst_name: string
+          frequency: string
+          id: string
+          port: number
+          protocol: string
+          reasons: Json
+          src_name: string
+          state: string
+          typical_time: string
+          volume: string
+        }
+        Insert: {
+          anomaly_score?: number
+          confidence: number
+          dst_name: string
+          frequency: string
+          id: string
+          port: number
+          protocol: string
+          reasons?: Json
+          src_name: string
+          state: string
+          typical_time: string
+          volume: string
+        }
+        Update: {
+          anomaly_score?: number
+          confidence?: number
+          dst_name?: string
+          frequency?: string
+          id?: string
+          port?: number
+          protocol?: string
+          reasons?: Json
+          src_name?: string
+          state?: string
+          typical_time?: string
+          volume?: string
+        }
+        Relationships: []
+      }
+      conversations: {
+        Row: {
+          anomaly_score: number
+          bytes: number
+          dst_id: string
+          dst_ip: string
+          dst_name: string
+          dst_port: number
+          dst_zone: string
+          id: string
+          packets: number
+          protocol: string
+          risk: string
+          src_id: string
+          src_ip: string
+          src_name: string
+          src_port: number
+          src_zone: string
+          status: string
+          timestamp: string
+        }
+        Insert: {
+          anomaly_score?: number
+          bytes: number
+          dst_id: string
+          dst_ip: string
+          dst_name: string
+          dst_port: number
+          dst_zone: string
+          id: string
+          packets: number
+          protocol: string
+          risk: string
+          src_id: string
+          src_ip: string
+          src_name: string
+          src_port: number
+          src_zone: string
+          status: string
+          timestamp: string
+        }
+        Update: {
+          anomaly_score?: number
+          bytes?: number
+          dst_id?: string
+          dst_ip?: string
+          dst_name?: string
+          dst_port?: number
+          dst_zone?: string
+          id?: string
+          packets?: number
+          protocol?: string
+          risk?: string
+          src_id?: string
+          src_ip?: string
+          src_name?: string
+          src_port?: number
+          src_zone?: string
+          status?: string
+          timestamp?: string
+        }
+        Relationships: []
+      }
+      investigation_events: {
+        Row: {
+          case_id: string
+          detail: string
+          id: string
+          position: number
+          severity: string
+          time: string
+          title: string
+        }
+        Insert: {
+          case_id?: string
+          detail: string
+          id?: string
+          position?: number
+          severity: string
+          time: string
+          title: string
+        }
+        Update: {
+          case_id?: string
+          detail?: string
+          id?: string
+          position?: number
+          severity?: string
+          time?: string
+          title?: string
+        }
+        Relationships: []
+      }
+      profiles: {
+        Row: {
+          created_at: string
+          display_name: string | null
+          email: string | null
+          id: string
+        }
+        Insert: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id: string
+        }
+        Update: {
+          created_at?: string
+          display_name?: string | null
+          email?: string | null
+          id?: string
+        }
+        Relationships: []
+      }
+      protocol_stats: {
+        Row: {
+          alerts: number
+          assets: number
+          category: string
+          name: string
+          port: number
+          sessions: number
+          unexpected: number
+          volume: string
+          volume_mb: number
+        }
+        Insert: {
+          alerts?: number
+          assets?: number
+          category: string
+          name: string
+          port: number
+          sessions?: number
+          unexpected?: number
+          volume: string
+          volume_mb?: number
+        }
+        Update: {
+          alerts?: number
+          assets?: number
+          category?: string
+          name?: string
+          port?: number
+          sessions?: number
+          unexpected?: number
+          volume?: string
+          volume_mb?: number
+        }
+        Relationships: []
+      }
+      sensors: {
+        Row: {
+          bandwidth: string
+          health: number
+          id: string
+          interfaces: Json
+          ip: string
+          last_heartbeat: string
+          location: string
+          name: string
+          packet_drops: string
+          pps: number
+          status: string
+          version: string
+        }
+        Insert: {
+          bandwidth: string
+          health?: number
+          id: string
+          interfaces?: Json
+          ip: string
+          last_heartbeat: string
+          location: string
+          name: string
+          packet_drops: string
+          pps?: number
+          status: string
+          version: string
+        }
+        Update: {
+          bandwidth?: string
+          health?: number
+          id?: string
+          interfaces?: Json
+          ip?: string
+          last_heartbeat?: string
+          location?: string
+          name?: string
+          packet_drops?: string
+          pps?: number
+          status?: string
+          version?: string
+        }
+        Relationships: []
+      }
+      threat_intel: {
+        Row: {
+          campaign: string
+          confidence: number
+          id: string
+          indicator: string
+          last_seen: string
+          matches: number
+          severity: string
+          source: string
+          type: string
+        }
+        Insert: {
+          campaign: string
+          confidence: number
+          id?: string
+          indicator: string
+          last_seen: string
+          matches?: number
+          severity: string
+          source: string
+          type: string
+        }
+        Update: {
+          campaign?: string
+          confidence?: number
+          id?: string
+          indicator?: string
+          last_seen?: string
+          matches?: number
+          severity?: string
+          source?: string
+          type?: string
+        }
+        Relationships: []
+      }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
+      vulnerabilities: {
+        Row: {
+          asset_id: string
+          asset_name: string
+          criticality: string
+          cve: string
+          cvss: number
+          description: string
+          exploitability: string
+          id: string
+          mitigation_available: boolean
+          ot_risk: string
+          patch_available: boolean
+          product: string
+          reachable: boolean
+          risk_score: number
+          status: string
+          vendor: string
+        }
+        Insert: {
+          asset_id: string
+          asset_name: string
+          criticality: string
+          cve: string
+          cvss: number
+          description: string
+          exploitability: string
+          id?: string
+          mitigation_available?: boolean
+          ot_risk: string
+          patch_available?: boolean
+          product: string
+          reachable?: boolean
+          risk_score: number
+          status?: string
+          vendor: string
+        }
+        Update: {
+          asset_id?: string
+          asset_name?: string
+          criticality?: string
+          cve?: string
+          cvss?: number
+          description?: string
+          exploitability?: string
+          id?: string
+          mitigation_available?: boolean
+          ot_risk?: string
+          patch_available?: boolean
+          product?: string
+          reachable?: boolean
+          risk_score?: number
+          status?: string
+          vendor?: string
+        }
+        Relationships: []
+      }
+      zones: {
+        Row: {
+          alerts: number
+          assets: number
+          conduits: Json
+          name: string
+          purdue: string
+          risk: string
+          traffic: string
+          unauthorized: number
+        }
+        Insert: {
+          alerts?: number
+          assets?: number
+          conduits?: Json
+          name: string
+          purdue: string
+          risk: string
+          traffic: string
+          unauthorized?: number
+        }
+        Update: {
+          alerts?: number
+          assets?: number
+          conduits?: Json
+          name?: string
+          purdue?: string
+          risk?: string
+          traffic?: string
+          unauthorized?: number
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "analyst" | "viewer"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -150,6 +716,8 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "analyst", "viewer"],
+    },
   },
 } as const
