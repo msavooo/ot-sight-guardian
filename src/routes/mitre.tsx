@@ -16,7 +16,7 @@ export const Route = createFileRoute("/mitre")({
       { property: "og:description", content: "Technique-level detection coverage for industrial control systems." },
     ],
   }),
-  component: Mitre;
+  component: Mitre,
 });
 
 function Mitre() {
