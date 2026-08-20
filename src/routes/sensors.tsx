@@ -43,7 +43,7 @@ function Sensors() {
             title={s.name}
             subtitle={s.location}
             bodyClassName="space-y-3 p-4"
-            actions={
+            action={
               <Tag tone={s.status === "Healthy" ? "healthy" : "warn"}>{s.status}</Tag>
             }
           >
